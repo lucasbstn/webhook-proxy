@@ -33,12 +33,8 @@ app.use('/v1/execute', bodyParser.json(), async (req, res) => {
                 headers
             }
         );
-
-        res.status(response.data.statusCode);
-        res.json({
-            data: response.data,
-            code: response.data.statusCode,
-        });
+        
+        res.send(response.data.response);
     } catch(err) {
         // Axios error
         if (err.response) {
