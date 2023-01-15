@@ -7,7 +7,7 @@ const app = express();
 
 app.use(healthz);
 
-app.use('/v1/execute', bodyParser.json(), async (req, res) => {
+app.use('/ical', bodyParser.json(), async (req, res) => {
     try {
         const data = {
             'token':req.query.token
@@ -33,7 +33,7 @@ app.use('/v1/execute', bodyParser.json(), async (req, res) => {
                 headers
             }
         );
-        
+        res.type('text/calendar')
         res.send(response.data.response);
     } catch(err) {
         // Axios error
